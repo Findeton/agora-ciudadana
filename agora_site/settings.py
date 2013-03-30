@@ -106,7 +106,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
-    'reversion.middleware.RevisionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -160,7 +159,6 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "dajaxice.finders.DajaxiceFinder"
 )
 
 INSTALLED_APPS = (
@@ -177,7 +175,6 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.flatpages',
     'debug_toolbar',
-    'reversion',
     'south',
     'guardian',
     'easy_thumbnails',
@@ -190,7 +187,6 @@ INSTALLED_APPS = (
     'agora_site.accounts',
     'endless_pagination',
     'haystack',
-    'dajaxice',
     'djcelery'
 )
 
@@ -274,8 +270,8 @@ CRISPY_FAIL_SILENTLY = not DEBUG
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.xapian_backend.XapianEngine',
-        'PATH': os.path.join(ROOT_PATH, 'xapian_index'),
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
 

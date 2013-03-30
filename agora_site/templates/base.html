@@ -1,7 +1,6 @@
 {% load i18n %}
 {% load string_tags %}
 {% load agora_utils %}
-{% load dajaxice_templatetags %}
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +42,6 @@
         js_update();
     });
     </script>
-    {% dajaxice_js_import %}
     {% if not DEBUG %}
         <link rel="stylesheet" href="{{ STATIC_URL }}less/agora.css" type="text/css" />
     {% else %}
